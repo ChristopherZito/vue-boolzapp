@@ -1,6 +1,146 @@
+/* general */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+/* 
+COLORI 
+#dcd4cd     font wh
+#8edafc     blu notifica
+#d5f9ba     verde messaggio
+#e9ebeb     grigio selezionato
+#f3eeea     barra di testo
+#eaeaea     top bar
+*/
 
+/* 
+.clearfix::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+*/
+/* colore di background di pagina*/
+#top-green {
+    height: 15vh;
+    background-color: #029588;
+}
+
+#page {
+    height: 85vh;
+    background-color: #d5dbd9;
+}
+
+/* posizione del corpo principale */
+#main-body {
+    height: 90vh;
+    position: absolute;
+    top: 5vh;
+    left: 5% ;
+    right: 5%;
+    display: flex;
+    /* debug */
+    background-color: red;
+}
+
+#main-body aside {
+    width: 30%;
+    height: 100%;
+    border: 1px solid black;
+    /* debug */
+    background-color: black;
+}
+
+#main-body section {
+    width: 70%;
+    height: 100%;  
+    /* debug */
+    background-color: rgb(91, 164, 7);
+}
+
+/* parte aside */
+#my-id {
+    height: 10%;
+    background-color: #eaeaea ;
+}
+
+#notifiche {
+    height: 13%;
+    background-color: #8edafc;
+}
+
+#search {
+    height: 7%;
+    background-color: #ffff;
+    padding: 5px;
+}
+
+#search input {
+    width: 90%;
+    border: none;
+    padding: 10px;
+}
+#search div{
+    width: 10%;
+    text-align: center;
+    padding: 6px ;
+    margin-right: 10px;
+}
+#search div i{
+    font-size: 20px;
+    color: grey;
+}
+#search span{
+    margin: 3px;
+    border: 1px solid grey;
+    display: flex;
+    align-items: center;
+}
+
+#chats {
+    height: 70%;
+    background-color: #ffff;
+    border: 1px solid black;
+}
+
+/* parte principale  */
+#message-top-bar {
+    height: 10%;
+    background-color: #eaeaea ;
+}
+
+#message-area {
+    height: 80%;
+    background-position: center;
+    background-size: contain;
+    background-image: url("https://preview.redd.it/qwd83nc4xxf41.jpg?auto=webp&s=172adf428061ec1b71c0d43b7ba870f85d46a816");
+}
+
+#text-input {
+    height: 10%;
+    background-color: #f3eeea;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* scrivere un messaggio INPUT */
+#text-input i {
+    font-size: 30px;
+    color: grey;
+    padding: 20px;
+}
+
+#message-text-input {
+    width: 80%;
+    margin: 0 10px;
+}
+
+#message-text-input input {
+    width: 100%;
+    height: 50px;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+}
