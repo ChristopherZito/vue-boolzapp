@@ -116,7 +116,10 @@ i{
 /* parte principale  */
 #message-top-bar {
     height: 10%;
-    background-color: #eaeaea ;
+    background-color: #eaeaea;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #message-area {
@@ -136,7 +139,7 @@ i{
 
 /* scrivere un messaggio INPUT */
 #text-input i {
-    font-size: 30px;
+    font-size: 20px;
     padding: 20px;
 }
 
@@ -193,4 +196,53 @@ i{
 #notifiche i {
     font-size: 20px;
     color: #8edafc;
+}
+
+/* top bar main-page */
+#message-top-bar figure {
+    width: 10%;
+    margin-right: 10px;
+}
+
+#message-top-bar figure img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+#message-top-bar div{
+    display: flex;
+    align-items: center;
+}
+
+/* area delle chat attive */
+.chat-in-progress {
+    display: flex;
+    padding: 20px;
+}
+.chat-in-progress figure {
+    width: 15%;
+    margin-right: 20px;
+}
+
+.chat-in-progress figure img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.chat-in-progress div {
+    display: flex;
+    align-items: center;
+    width: 45%;
+}
+
+.last-acces{
+    width: 50%;
+    text-align: end;
+}
+
+/* classi controllate da js */
+.selected{
+    background-color: #e9ebeb;
 }
