@@ -219,6 +219,7 @@ i{
 .chat-in-progress {
     display: flex;
     padding: 20px;
+    border: 1px solid grey;
 }
 .chat-in-progress figure {
     width: 15%;
@@ -245,4 +246,12 @@ i{
 /* classi controllate da js */
 .selected{
     background-color: #e9ebeb;
+}
+
+.active{
+    display: block;
+}
+
+.deActive{
+    display: none;
 }

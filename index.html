@@ -67,15 +67,15 @@
                 <!-- bloccho chat attive -->
                 <div id="chats">
                     <!-- parte che si crea con JS selezione personaggio -->
-                    <div class="chat-in-progress selected">
+                    <div class="chat-in-progress" v-for="chat, i in utenti" :mkey="i">
                         <div>
                             <figure>
-                                <img src="img/avatar_1.jpg" alt="avatar 1">
+                                <img :src="chat.avatar" alt="nome">
                             </figure>
                             <!-- nome -->
                             <span>
                                 <h2>
-                                    Nome
+                                    {{chat.nome}}
                                 </h2>
                                 <p>
                                     Ultimo messaggio
@@ -83,7 +83,7 @@
                             </span>
                         </div>
                         <span class="last-acces"> 
-                            Ultimo accesso
+                            {{chat.lastAcces}}
                         </span>
                     </div>
                 </div>
