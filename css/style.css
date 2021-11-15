@@ -105,12 +105,14 @@ i{
     margin: 3px;
     display: flex;
     align-items: center;
+    border: 1px solid lightgray;
 }
 
 #chats {
     height: 70%;
     background-color: #ffff;
     border: 1px solid black;
+    overflow-y: auto;
 }
 
 /* parte principale  */
@@ -122,11 +124,15 @@ i{
     align-items: center;
 }
 
-#message-area {
+.message-area {
     height: 80%;
     background-position: center;
     background-size: contain;
     background-image: url("https://preview.redd.it/qwd83nc4xxf41.jpg?auto=webp&s=172adf428061ec1b71c0d43b7ba870f85d46a816");
+    overflow-y: auto;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
 }
 
 #text-input {
@@ -222,7 +228,7 @@ i{
     border: 1px solid grey;
 }
 .chat-in-progress figure {
-    width: 15%;
+    width: 25%;
     margin-right: 20px;
 }
 
@@ -235,23 +241,48 @@ i{
 .chat-in-progress div {
     display: flex;
     align-items: center;
-    width: 45%;
+    width: 50%;
 }
 
-.last-acces{
-    width: 50%;
+.last-acces {
+    width: 45%;
     text-align: end;
 }
 
+/* messaggi visualizzati */
+.owner,.user{
+    width: 40%;
+    min-height: 50px;
+    padding: 2%;
+    margin: 10px 0;
+    border-radius: 10px;
+    position: relative;
+}
+.time-message{
+    font-size: 10px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: grey;
+}
 /* classi controllate da js */
-.selected{
+.selected {
     background-color: #e9ebeb;
 }
 
-.active{
+.active {
     display: block;
 }
 
-.deActive{
+.deActive {
     display: none;
+}
+
+.user {
+    background-color: #ffff;
+}
+
+.owner {
+    background-color: #d5f9ba;
+    align-self: flex-end;
 }

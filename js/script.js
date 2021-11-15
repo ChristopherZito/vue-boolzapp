@@ -1,7 +1,7 @@
 //user è l'utente a cui scrivo, io sono owner
 var wApp = new Vue (
     {
-        el: "#chats",
+        el: "#main-body",
         data:{
             utenti: [
                 //oggetto 1

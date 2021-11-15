@@ -66,6 +66,7 @@
                 </div>
                 <!-- bloccho chat attive -->
                 <div id="chats">
+
                     <!-- parte che si crea con JS selezione personaggio -->
                     <div class="chat-in-progress" v-for="chat, i in utenti" :mkey="i">
                         <div>
@@ -86,6 +87,7 @@
                             {{chat.lastAcces}}
                         </span>
                     </div>
+
                 </div>
             </aside>
 
@@ -121,8 +123,28 @@
 
                 
                 <!-- blocco pagina principale -->
-                <div id="message-area">
+                <div class="message-area">
 
+                    <!-- tutti i messaggi vanno creati con js -->
+                    <div class="user">
+                        testo blablalba
+                        <span class="time-message">
+                            inviato il gg/mm/aa alle h:m:s
+                        </span>
+                    </div>
+                    <div class="owner">
+                        testo blablalba ugaugauga quaqua qua
+                        <span class="time-message">
+                            inviato il gg/mm/aa alle h:m:s
+                        </span>
+                    </div>
+                    <div class="user">
+                        testo bl
+                        <span class="time-message">
+                            inviato il gg/mm/aa alle h:m:s
+                        </span>
+                    </div>
+    
                     
                     
                 </div>
