@@ -148,12 +148,23 @@ var wApp = new Vue (
             //milestone 3, utilizzo della chat
             sendNewMessage(were){
                 //console.log(were); indica la chat in cui sto scrivendo
+                
+                //Milestone 6, creazione data UTC
+                var orario = new Date();
+                let day = parseInt(orario.getUTCDate());
+                let month = parseInt(orario.getUTCMonth() +1);
+                let year = parseInt(orario.getUTCFullYear());
+                let hour = parseInt(orario.getHours());
+                let minute = parseInt(orario.getMinutes());
+                let sec = parseInt(orario.getSeconds());
+                let time = `${hour}/${minute}/${sec} ${day}/${month}/${year}`
+                //console.log(time);
 
                 //creazione nuovo oggetto
                 let newChat = {
                     message: this.utenti[were].chat.message = this.newMessage,
                     whoSend: "owner",
-                    timeSend: "11:54 11/09/2002",
+                    timeSend: time,
                     infoDelet:false,
                 };
 
@@ -168,7 +179,7 @@ var wApp = new Vue (
                     let botChat = {
                         message: "ok",
                         whoSend: "user",
-                        timeSend: "11:54 11/09/2002",
+                        timeSend: time,
                         infoDelet:false,
                     };
                     this.utenti[were].chat.push(botChat);
@@ -218,8 +229,7 @@ var wApp = new Vue (
             deleteMsg(msg, index){
                 //selezionare il messaggio da eliminare console.log(this.utenti[index].chat[msg]);
                 this.utenti[index].chat.splice(msg, 1);
-            } 
-            //milestone 6, mettere la data attuale ai messaggi   
+            }  
         },
     }
 );
