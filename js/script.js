@@ -186,8 +186,10 @@ var wApp = new Vue (
                 //ciclo per la ricerca, la prima lettera deve essere maiuscola
                 for(let i = 0; i < names.length; i++){
                     let oneName = names[i];
+                    let x = names[i].toLowerCase();
+                    //console.log(x);
                     //console.log("oneName ", oneName);
-                    if(oneName.indexOf(text) > -1){
+                    if(oneName.indexOf(text) > -1 || x.indexOf(text) > -1 ) {
                         // console.log("prima",this.utenti[i].research);
                         this.utenti[i].research = false;
                         // console.log(`ti vedi ${names[i]},
