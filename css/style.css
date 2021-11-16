@@ -127,8 +127,9 @@ i{
 .message-area {
     height: 80%;
     background-position: center;
-    background-size: contain;
-    background-image: url("https://preview.redd.it/qwd83nc4xxf41.jpg?auto=webp&s=172adf428061ec1b71c0d43b7ba870f85d46a816");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("https://i.pinimg.com/originals/98/8f/21/988f21e0949e08718733cae250c5f493.jpg?q=65");
     overflow-y: auto;
     padding: 50px;
     display: flex;
@@ -270,12 +271,10 @@ i{
     background-color: #e9ebeb;
 }
 
-.active {
-    display: block;
-}
+
 
 .deActive {
-    display: none;
+    display: none !important;
 }
 
 .user {
@@ -285,4 +284,8 @@ i{
 .owner {
     background-color: #d5f9ba;
     align-self: flex-end;
+}
+
+.chat-in-progress:hover {
+    background-color: #e9ebeb ;
 }

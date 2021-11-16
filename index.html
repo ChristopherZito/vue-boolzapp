@@ -68,15 +68,15 @@
                 <div id="chats">
 
                     <!-- parte che si crea con JS selezione personaggio -->
-                    <div class="chat-in-progress" v-for="chat, i in utenti" :mkey="i">
+                    <div class="chat-in-progress" v-for="userToChat, i in utenti" :key="i" @click="changeChat(i)" :class="userToChat.visible === true? `selected` : `` ">
                         <div>
                             <figure>
-                                <img :src="chat.avatar" alt="nome">
+                                <img :src="userToChat.avatar" :alt="userToChat.nome">
                             </figure>
                             <!-- nome -->
                             <span>
                                 <h2>
-                                    {{chat.nome}}
+                                    {{userToChat.nome}}
                                 </h2>
                                 <p>
                                     Ultimo messaggio
@@ -84,7 +84,7 @@
                             </span>
                         </div>
                         <span class="last-acces"> 
-                            {{chat.lastAcces}}
+                            {{userToChat.lastAcces}}
                         </span>
                     </div>
 
@@ -97,17 +97,17 @@
                 <div id="message-top-bar">
 
                     <!-- questa parte cambia in base alla chat -->
-                    <div>
+                    <div class="" v-for="immage in utenti" :class="immage.visible === false ? `deActive` : ``">
                         <figure>
-                            <img src="img/avatar_1.jpg" alt="avatar 1">
+                            <img :src="immage.avatar" alt="immage.nome">
                         </figure>
                         <!-- nome -->
                         <span>
                             <h2>
-                                Nome
+                                {{immage.nome}}
                             </h2>
                             <p>
-                                Ultimo accesso
+                                {{immage.lastAcces}}
                             </p>
                         </span>
                     </div>
@@ -123,37 +123,23 @@
 
                 
                 <!-- blocco pagina principale -->
-                <div class="message-area">
+                <div class="message-area" v-for="element, i in utenti" :class="element.visible === false? `deActive` : `` " :key="i">
 
                     <!-- tutti i messaggi vanno creati con js -->
-                    <div class="user">
-                        testo blablalba
+                    <div v-for="chats in element.chat" :class="chats.whoSend == `user`? `user` : `owner`">
+                        {{chats.message}}
                         <span class="time-message">
-                            inviato il gg/mm/aa alle h:m:s
-                        </span>
-                    </div>
-                    <div class="owner">
-                        testo blablalba ugaugauga quaqua qua
-                        <span class="time-message">
-                            inviato il gg/mm/aa alle h:m:s
-                        </span>
-                    </div>
-                    <div class="user">
-                        testo bl
-                        <span class="time-message">
-                            inviato il gg/mm/aa alle h:m:s
+                            {{chats.timeSend}}
                         </span>
                     </div>
     
-                    
-                    
                 </div>
                 <!-- area di testo -->
-                <div id="text-input">
+                <div id="text-input" v-for="chatBar,i in utenti" :class="chatBar.visible === false? `deActive` : `` " :key="i">
                     <div>
                         <i class="far fa-smile"></i>
                     </div>
-                    <div id="message-text-input">
+                    <div id="message-text-input" v-model="newMessage" @keyup.enter="sendNewMessage(i)">
                         <input type="text" placeholder="Scrivi un messaggio">
                     </div>
                     <div>
