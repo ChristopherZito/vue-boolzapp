@@ -122,20 +122,7 @@ var wApp = new Vue (
             newMessage:"",
             searchUser:"",
         },
-        //visualizzare l'ultimo messaggio di ogni chat "da fare" SuperBonus
-        computed:{
-            lastMsg(){
-                let message = [];
-                this.utenti.forEach(msg => {
-                    //console.log(msg.chat[msg.chat.length - 1].message);  legge l'ultimo messaggio dell'array chat
-                    message.push(msg.chat[msg.chat.length - 1].message);                
-                    return message;
-                })
-                //console.log(message); mostra un array con l'ultimo messaggio di ogni oggetto
-                return 
-            }
-        },
-
+        
         methods:{
             //milestone 2 switch tra chat
             changeChat(whoChat){
@@ -157,20 +144,21 @@ var wApp = new Vue (
                 let hour = parseInt(orario.getHours());
                 let minute = parseInt(orario.getMinutes());
                 let sec = parseInt(orario.getSeconds());
-                let time = `${hour}/${minute}/${sec} ${day}/${month}/${year}`
+                let time = `${hour}/${minute}/${sec}`;
+                let today = `${day}/${month}/${year}`;
                 //console.log(time);
 
                 //creazione nuovo oggetto
                 let newChat = {
                     message: this.utenti[were].chat.message = this.newMessage,
                     whoSend: "owner",
-                    timeSend: time,
+                    timeSend: `${time} ${today}`,
                     infoDelet:false,
                 };
 
                 //push nell'array chat
                 this.utenti[were].chat.push(newChat);
-
+               
                 //reset input bar
                 this.newMessage = " "; 
 
@@ -179,10 +167,11 @@ var wApp = new Vue (
                     let botChat = {
                         message: "ok",
                         whoSend: "user",
-                        timeSend: time,
+                        timeSend: `${time} ${today}`,
                         infoDelet:false,
                     };
                     this.utenti[were].chat.push(botChat);
+                    this.utenti[were].lastAcces =  today;
                 }, 1000);
             },
             //milestone 4, ricerca degli user
@@ -196,7 +185,6 @@ var wApp = new Vue (
                 //controllo lettere inserite        console.log("lettere scritte: ", text); 
                 //ciclo per la ricerca, la prima lettera deve essere maiuscola
                 for(let i = 0; i < names.length; i++){
-                    let oneName = names[i];
                     let down = names[i].toLowerCase();
                     let up = names[i].toUpperCase();
                     //console.log(x);

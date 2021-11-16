@@ -79,7 +79,8 @@
                                     {{userToChat.nome}}
                                 </h2>
                                 <p>
-                                    Last message: {{lastMsg}}
+                                    <!-- visualizzare l'ultimo messaggio di ogni chat SuperBonus -->
+                                    {{userToChat.chat[userToChat.chat.length - 1].message.slice(0,15)}}...
                                 </p>
                             </span>
                         </div>
