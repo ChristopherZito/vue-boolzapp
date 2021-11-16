@@ -271,7 +271,9 @@ i{
     background-color: #e9ebeb;
 }
 
-
+.active{
+    display: flex !important;
+}
 
 .deActive {
     display: none !important;

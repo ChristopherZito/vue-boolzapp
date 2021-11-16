@@ -10,6 +10,7 @@ var wApp = new Vue (
                     avatar: "img/avatar_1.jpg",
                     lastAcces:"11/09/2001",
                     visible:true,
+                    research:false,
                     chat: [
                         {
                         message:"messaggio da scrivere",
@@ -22,7 +23,7 @@ var wApp = new Vue (
                         timeSend:"11:54 11/09/2001",
                         },
                         {
-                            message:"messaggio da scrivere",
+                            message:"messaggio da scrivere 1",
                             whoSend:"user",
                             timeSend:"11:54 11/09/2001",
                         },
@@ -34,6 +35,7 @@ var wApp = new Vue (
                     avatar: "img/avatar_2.jpg",
                     lastAcces:"11/09/2001",
                     visible:false,
+                    research:false,
                     chat: [
                         {
                         message:"messaggio da scrivere",
@@ -46,7 +48,7 @@ var wApp = new Vue (
                         timeSend:"11:54 11/09/2001",
                         },
                         {
-                            message:"messaggio da scrivere",
+                            message:"messaggio da scrivere 2",
                             whoSend:"user",
                             timeSend:"11:54 11/09/2001",
                         },
@@ -58,6 +60,7 @@ var wApp = new Vue (
                     avatar: "img/avatar_3.jpg",
                     lastAcces:"11/09/2001",
                     visible:false,
+                    research:false,
                     chat: [
                         {
                         message:"messaggio da scrivere",
@@ -70,7 +73,7 @@ var wApp = new Vue (
                         timeSend:"11:54 11/09/2001",
                         },
                         {
-                            message:"messaggio da scrivere",
+                            message:"messaggio da scrivere 3",
                             whoSend:"user",
                             timeSend:"11:54 11/09/2001",
                         },
@@ -82,6 +85,7 @@ var wApp = new Vue (
                     avatar: "img/avatar_4.jpg",
                     lastAcces:"11/09/2001",
                     visible:false,
+                    research:false,
                     chat: [
                         {
                         message:"messaggio da scrivere",
@@ -94,7 +98,7 @@ var wApp = new Vue (
                         timeSend:"11:54 11/09/2001",
                         },
                         {
-                            message:"messaggio da scrivere",
+                            message:"messaggio da scrivere 4",
                             whoSend:"user",
                             timeSend:"11:54 11/09/2001",
                         },
@@ -104,15 +108,32 @@ var wApp = new Vue (
             ],
             display:"",
             newMessage:"",
+            searchUser:"",
         },
+        //visualizzare l'ultimo messaggio di ogni chat "da fare" SuperBonus
+        computed:{
+            lastMsg(){
+                let message = [];
+                this.utenti.forEach(msg => {
+                    //console.log(msg.chat[msg.chat.length - 1].message);  legge l'ultimo messaggio dell'array chat
+                    message.push(msg.chat[msg.chat.length - 1].message);                
+                    return message;
+                })
+                //console.log(message); mostra un array con l'ultimo messaggio di ogni oggetto
+                return 
+            }
+        },
+
         methods:{
+            //milestone 2 switch tra chat
             changeChat(whoChat){
-                this.utenti.forEach(variabile => {
-                    return variabile.visible = false;
+                this.utenti.forEach(chiVedo => {
+                    return chiVedo.visible = false;
                 });
 
                 this.utenti[whoChat].visible = true;
             },
+            //milestone 3, utilizzo della chat
             sendNewMessage(were){
                 //console.log(were); indica la chat in cui sto scrivendo
 
@@ -138,9 +159,41 @@ var wApp = new Vue (
                     };
                     this.utenti[were].chat.push(botChat);
                 }, 1000);
-            }
+            },
+            //milestone 4, ricerca degli user
+            cercaUser(text){
+                const names = [];
+                this.utenti.forEach(nameNew => {
+                    names.push(nameNew.nome)
+                    return
+                })
+                //array con i nomi da cercare       console.log("array nomi: ", names);
+                //controllo lettere inserite        console.log("lettere scritte: ", text); 
+                //ciclo per la ricerca, la prima lettera deve essere maiuscola
+                for(let i = 0; i < names.length; i++){
+                    let oneName = names[i];
+                    //console.log("oneName ", oneName);
+                    if(oneName.indexOf(text) > -1){
+                        // console.log("prima",this.utenti[i].research);
+                        this.utenti[i].research = false;
+                        // console.log(`ti vedi ${names[i]},
+                        // dopo sei ${ this.utenti[i].research}
+                        // `);
+                        
+                    }else{
+                        this.utenti[i].research = true;
+                        // console.log(`non ti vedi ${names[i]},
+                        //   sei ${ this.utenti[i].research}
+                        //   `);
+                    }
+                }
+            },
 
+            //milestone 5, elimina messaggio "da fare"
+            deleteMsg(){
+                console.log("non esisto ancora");
+            },   
+            //milestone 6, mettere la data attuale ai messaggi   
         },
     }
 );
-
