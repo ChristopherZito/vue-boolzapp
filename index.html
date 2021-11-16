@@ -135,16 +135,17 @@
     
                 </div>
                 <!-- area di testo -->
-                <div id="text-input" v-for="chatBar,i in utenti" :class="chatBar.visible === false? `deActive` : `` " :key="i">
+                <div id="text-input" v-for="chatBar,i in utenti" :class="chatBar.visible === false? `deActive` : `` " :mkey="i">
                     <div>
                         <i class="far fa-smile"></i>
                     </div>
-                    <div id="message-text-input" v-model="newMessage" @keyup.enter="sendNewMessage(i)">
-                        <input type="text" placeholder="Scrivi un messaggio">
+                    <div id="message-text-input" >
+                        <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage"@keyup.enter="sendNewMessage(i)">
                     </div>
                     <div>
                         <i class="fas fa-microphone"></i>
                     </div>
+                    
 
                 </div>
             </section>

@@ -114,37 +114,33 @@ var wApp = new Vue (
                 this.utenti[whoChat].visible = true;
             },
             sendNewMessage(were){
-                console.log(were);//indica la chat in cui sto scrivendo
-                console.log(this.newMessage, "hai");
+                //console.log(were); indica la chat in cui sto scrivendo
+
+                //creazione nuovo oggetto
                 let newChat = {
-                    message: this.utenti.chat = this.newMessage,
+                    message: this.utenti[were].chat.message = this.newMessage,
                     whoSend: "owner",
                     timeSend: "11:54 11/09/2002"
                 };
-                console.log(newChat);
-                /* this.utenti[were].chat.push(newChat);*/
-                /* this.newMessage = ""; */ 
+
+                //push nell'array chat
+                this.utenti[were].chat.push(newChat);
+
+                //reset input bar
+                this.newMessage = " "; 
+
+                //risposta del computer "ok" _-_
+                setTimeout(() => {
+                    let botChat = {
+                        message: "ok",
+                        whoSend: "user",
+                        timeSend: "11:54 11/09/2002"
+                    };
+                    this.utenti[were].chat.push(botChat);
+                }, 1000);
             }
 
         },
     }
 );
-/*
- addObj(){
-    //creazione nuovo oggetto da inserire nell'array
-   
-    if(this.newTextObj != "" && this.newTextObj.length > 4){
-        let newObj = {
-        text: this.object.text = this.newTextObj,
-        done: this.object.done = false,
-        };
-        // console.log("text: ",this.newTextObj);
-        // console.log(newObj);
 
-        this.object.push(newObj)
-        //reset testo input
-        this.newTextObj = "";
-    }
-    
-}, 
-*/
