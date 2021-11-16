@@ -15,19 +15,19 @@ var wApp = new Vue (
                         {
                         message:"messaggio da scrivere",
                         whoSend:"user",
-                        timeSend:"11:54 11/09/2001",
+                        timeSend:"11:54",
                         infoDelet:false,
                         },
                         {
                         message:"messaggio da scrivere Michele",
                         whoSend:"owner",
-                        timeSend:"11:54 11/09/2001",
+                        timeSend:"11:54",
                         infoDelet:false,
                         },
                         {
                         message:"messaggio da scrivere 1",
                         whoSend:"user",
-                        timeSend:"11:54 11/09/2001",
+                        timeSend:"11:54",
                         infoDelet:false,
                         },
                     ],
@@ -43,19 +43,19 @@ var wApp = new Vue (
                         {
                         message:"messaggio da scrivere",
                         whoSend:"user",
-                        timeSend:"11:54 11/09/2001",
+                        timeSend:"11:54",
                         infoDelet:false,
                         },
                         {
                         message:"messaggio da scrivere Fabio",
                         whoSend:"owner",
-                        timeSend:"11:54 11/09/2001",
+                        timeSend:"11:54",
                         infoDelet:false,
                         },
                         {
                         message:"messaggio da scrivere 2",
                         whoSend:"user",
-                        timeSend:"11:54 11/09/2001",
+                        timeSend:"11:54",
                         infoDelet:false,
                         },
                     ],
@@ -71,19 +71,19 @@ var wApp = new Vue (
                         {
                         message:"messaggio da scrivere",
                         whoSend:"user",
-                        timeSend:"11:54 11/09/2001",
+                        timeSend:"11:54",
                         infoDelet:false,
                         },
                         {
                         message:"messaggio da scrivere Samuele",
                         whoSend:"owner",
-                        timeSend:"11:54 11/09/2001",
+                        timeSend:"11:54",
                         infoDelet:false,
                         },
                         {
                         message:"messaggio da scrivere 3",
                         whoSend:"user",
-                        timeSend:"11:54 11/09/2001",
+                        timeSend:"11:54",
                         infoDelet:false,
                         },
                     ],
@@ -99,19 +99,19 @@ var wApp = new Vue (
                         {
                         message:"messaggio da scrivere",
                         whoSend:"user",
-                        timeSend:"11:54 11/09/2001",
+                        timeSend:"11:54",
                         infoDelet:false,
                         },
                         {
                         message:"messaggio da scrivere Luisa",
                         whoSend:"owner",
-                        timeSend:"11:54 11/09/2001",
+                        timeSend:"11:54",
                         infoDelet:false,
                         },
                         {
                         message:"messaggio da scrivere 4",
                         whoSend:"user",
-                        timeSend:"11:54 11/09/2001",
+                        timeSend:"11:54",
                         infoDelet:false,
                         },
                     ],
@@ -143,36 +143,38 @@ var wApp = new Vue (
                 let year = parseInt(orario.getUTCFullYear());
                 let hour = parseInt(orario.getHours());
                 let minute = parseInt(orario.getMinutes());
-                let sec = parseInt(orario.getSeconds());
-                let time = `${hour}/${minute}/${sec}`;
+                let time = `${hour}:${minute}`;
                 let today = `${day}/${month}/${year}`;
                 //console.log(time);
 
                 //creazione nuovo oggetto
-                let newChat = {
-                    message: this.utenti[were].chat.message = this.newMessage,
-                    whoSend: "owner",
-                    timeSend: `${time} ${today}`,
-                    infoDelet:false,
-                };
+                if(this.newMessage.length != 0 && this.newMessage != " " && this.newMessage != "  " && this.newMessage != "   "){
 
-                //push nell'array chat
-                this.utenti[were].chat.push(newChat);
-               
-                //reset input bar
-                this.newMessage = " "; 
-
-                //risposta del computer "ok" _-_
-                setTimeout(() => {
-                    let botChat = {
-                        message: "ok",
-                        whoSend: "user",
-                        timeSend: `${time} ${today}`,
+                    let newChat = {
+                        message: this.utenti[were].chat.message = this.newMessage,
+                        whoSend: "owner",
+                        timeSend: time,
                         infoDelet:false,
                     };
-                    this.utenti[were].chat.push(botChat);
-                    this.utenti[were].lastAcces =  today;
-                }, 1000);
+    
+                    //push nell'array chat
+                    this.utenti[were].chat.push(newChat);
+                   
+                    //reset input bar
+                    this.newMessage = " "; 
+                    //risposta del computer "ok" _-_
+                    setTimeout(() => {
+                        let botChat = {
+                            message: "ok",
+                            whoSend: "user",
+                            timeSend: time,
+                            infoDelet:false,
+                        };
+                        this.utenti[were].chat.push(botChat);
+                        this.utenti[were].lastAcces = `Ultimo accesso il ${today} alle ${time}` ;
+                    }, 1000);
+                }
+
             },
             //milestone 4, ricerca degli user
             cercaUser(text){
