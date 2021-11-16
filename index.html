@@ -126,11 +126,19 @@
                 <div class="message-area" v-for="element, i in utenti" :class="element.visible === false? `deActive` : `` " :key="i">
 
                     <!-- tutti i messaggi vanno creati con js -->
-                    <div v-for="chats in element.chat" :class="chats.whoSend == `user`? `user` : `owner`">
+                    <div v-for="chats,m in element.chat" :class="chats.whoSend == `user`? `user` : `owner`" :key="m">
                         {{chats.message}}
                         <span class="time-message">
                             {{chats.timeSend}}
                         </span>
+                        <span class="delete-msg" @click="info(m, i)">
+                            <i class="fas fa-angle-down"></i>
+                        </span>
+                        <div class="options" :class="chats.infoDelet === false? `deActive` : ``  ">
+                            <h5 @click="deleteMsg(m, i)">
+                                delete message 
+                            </h5>
+                        </div>
                     </div>
     
                 </div>

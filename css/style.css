@@ -251,7 +251,7 @@ i{
 }
 
 /* messaggi visualizzati */
-.owner,.user{
+.owner,.user {
     width: 40%;
     min-height: 50px;
     padding: 2%;
@@ -259,13 +259,42 @@ i{
     border-radius: 10px;
     position: relative;
 }
-.time-message{
+.time-message {
     font-size: 10px;
     position: absolute;
     bottom: 5px;
     right: 5px;
     color: grey;
 }
+
+.delete-msg {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    padding: 3px 6px;
+    border-radius: 50%;
+}
+
+.options {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    background-color: #ffff;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    width: 150px;
+}
+.options:hover{
+    cursor: pointer;
+    background-color: lightslategray;
+}
+.delete-msg:hover {
+    cursor: pointer;
+    background-color: rgba(3, 16, 255, 0.524);
+}
+
 /* classi controllate da js */
 .selected {
     background-color: #e9ebeb;

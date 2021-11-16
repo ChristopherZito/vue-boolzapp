@@ -16,16 +16,19 @@ var wApp = new Vue (
                         message:"messaggio da scrivere",
                         whoSend:"user",
                         timeSend:"11:54 11/09/2001",
+                        infoDelet:false,
                         },
                         {
                         message:"messaggio da scrivere Michele",
                         whoSend:"owner",
                         timeSend:"11:54 11/09/2001",
+                        infoDelet:false,
                         },
                         {
-                            message:"messaggio da scrivere 1",
-                            whoSend:"user",
-                            timeSend:"11:54 11/09/2001",
+                        message:"messaggio da scrivere 1",
+                        whoSend:"user",
+                        timeSend:"11:54 11/09/2001",
+                        infoDelet:false,
                         },
                     ],
                 },
@@ -41,16 +44,19 @@ var wApp = new Vue (
                         message:"messaggio da scrivere",
                         whoSend:"user",
                         timeSend:"11:54 11/09/2001",
+                        infoDelet:false,
                         },
                         {
                         message:"messaggio da scrivere Fabio",
                         whoSend:"owner",
                         timeSend:"11:54 11/09/2001",
+                        infoDelet:false,
                         },
                         {
-                            message:"messaggio da scrivere 2",
-                            whoSend:"user",
-                            timeSend:"11:54 11/09/2001",
+                        message:"messaggio da scrivere 2",
+                        whoSend:"user",
+                        timeSend:"11:54 11/09/2001",
+                        infoDelet:false,
                         },
                     ],
                 },
@@ -66,16 +72,19 @@ var wApp = new Vue (
                         message:"messaggio da scrivere",
                         whoSend:"user",
                         timeSend:"11:54 11/09/2001",
+                        infoDelet:false,
                         },
                         {
                         message:"messaggio da scrivere Samuele",
                         whoSend:"owner",
                         timeSend:"11:54 11/09/2001",
+                        infoDelet:false,
                         },
                         {
-                            message:"messaggio da scrivere 3",
-                            whoSend:"user",
-                            timeSend:"11:54 11/09/2001",
+                        message:"messaggio da scrivere 3",
+                        whoSend:"user",
+                        timeSend:"11:54 11/09/2001",
+                        infoDelet:false,
                         },
                     ],
                 },
@@ -91,16 +100,19 @@ var wApp = new Vue (
                         message:"messaggio da scrivere",
                         whoSend:"user",
                         timeSend:"11:54 11/09/2001",
+                        infoDelet:false,
                         },
                         {
                         message:"messaggio da scrivere Luisa",
                         whoSend:"owner",
                         timeSend:"11:54 11/09/2001",
+                        infoDelet:false,
                         },
                         {
-                            message:"messaggio da scrivere 4",
-                            whoSend:"user",
-                            timeSend:"11:54 11/09/2001",
+                        message:"messaggio da scrivere 4",
+                        whoSend:"user",
+                        timeSend:"11:54 11/09/2001",
+                        infoDelet:false,
                         },
                     ],
                 },
@@ -141,7 +153,8 @@ var wApp = new Vue (
                 let newChat = {
                     message: this.utenti[were].chat.message = this.newMessage,
                     whoSend: "owner",
-                    timeSend: "11:54 11/09/2002"
+                    timeSend: "11:54 11/09/2002",
+                    infoDelet:false,
                 };
 
                 //push nell'array chat
@@ -155,7 +168,8 @@ var wApp = new Vue (
                     let botChat = {
                         message: "ok",
                         whoSend: "user",
-                        timeSend: "11:54 11/09/2002"
+                        timeSend: "11:54 11/09/2002",
+                        infoDelet:false,
                     };
                     this.utenti[were].chat.push(botChat);
                 }, 1000);
@@ -190,9 +204,18 @@ var wApp = new Vue (
             },
 
             //milestone 5, elimina messaggio "da fare"
-            deleteMsg(){
-                console.log("non esisto ancora");
-            },   
+            info(msg, index){
+                //indicano il numero del messaggio(msg) e la chat (index) console.log(msg, index);
+                if(this.utenti[index].chat[msg].infoDelet === false){
+                    this.utenti[index].chat[msg].infoDelet = true
+                }else{
+                    this.utenti[index].chat[msg].infoDelet = false
+                }
+            },  
+            deleteMsg(msg, index){
+                //selezionare il messaggio da eliminare console.log(this.utenti[index].chat[msg]);
+                this.utenti[index].chat.splice(msg, 1);
+            } 
             //milestone 6, mettere la data attuale ai messaggi   
         },
     }
